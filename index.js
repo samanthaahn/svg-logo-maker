@@ -38,9 +38,10 @@ inquirer
     message: 'What color would you like your text to be?'
 },
 {
-    type: 'input',
+    type: 'list',
     name: 'shape',
-    message: 'What shape would you like?'
+    message: 'What shape would you like?',
+    choices: ['circle', 'square', 'triangle'],
 },
 {
     type: 'input',
@@ -52,7 +53,7 @@ inquirer
 .then((answers) => {
     const readMeContent = generateReadMe(answers);
 
-    fs.writeFile('/dist/readme.md', readMeContent, (err) =>
+    fs.writeFile('logo.svg', readMeContent, (err) =>
     err ? console.log(err) : console.log('Successfully created readme.md file!')
     );
 });
