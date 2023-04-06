@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const SVG = require('./lib/svg');
+const Circle = require('./lib/circle');
+const Square = require('./lib/square');
+const Triangle = require('./lib/triangle');
 
 
 inquirer
@@ -31,9 +34,24 @@ inquirer
 .then((answers) => {
     const svg = new SVG();
     svg.setText(answers.character, answers.textColor);
-console.log(svg);
+
+
+let finalShape 
+
+if(answers.shape === 'circle'){
+    finalShape = new Circle();
+}else if(answers.shape === 'square'){
+    finalShape = new Square();
+}else{
+    finalShape = new Triangle();
+}
+
+finalShape.setColor(answer.shapeColor);
+svg.setShape(finalShape);
+
+
 const finalSVG = svg.render();
-// ADD LOGIC FO THE SHAPES 
+console.log(svg);
 
     fs.writeFile('logo.svg', finalSVG, (err) =>
     err ? console.log(err) : console.log('Successfully created SVG logo!')
