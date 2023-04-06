@@ -28,7 +28,10 @@ inquirer
 
 ])
 .then((answers) => {
-    fs.writeFile('logo.svg', (err) =>
+    // input constructor and render methods here
+
+
+    fs.writeFile('logo.svg', JSON.stringify(answers), (err) =>
     err ? console.log(err) : console.log('Successfully created SVG logo!')
     );
 });
