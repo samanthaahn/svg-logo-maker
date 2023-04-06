@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const SVG = require('./lib/svg');
 
 
 inquirer
@@ -11,7 +12,7 @@ inquirer
 },
 {
     type: 'input',
-    name: 'text color',
+    name: 'textColor',
     message: 'What color would you like your text to be?'
 },
 {
@@ -22,16 +23,19 @@ inquirer
 },
 {
     type: 'input',
-    name: 'shape color',
+    name: 'shapeColor',
     messag: 'What color would you like your shape to be?',
 },
 
 ])
 .then((answers) => {
-    // input constructor and render methods here
+    const svg = new SVG();
+    svg.setText(answers.character, answers.textColor);
+console.log(svg);
+const finalSVG = svg.render();
+// ADD LOGIC FO THE SHAPES 
 
-
-    fs.writeFile('logo.svg', JSON.stringify(answers), (err) =>
+    fs.writeFile('logo.svg', finalSVG, (err) =>
     err ? console.log(err) : console.log('Successfully created SVG logo!')
     );
 });
