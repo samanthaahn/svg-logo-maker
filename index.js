@@ -27,7 +27,7 @@ inquirer
 {
     type: 'input',
     name: 'shapeColor',
-    messag: 'What color would you like your shape to be?',
+    message: 'What color would you like your shape to be?',
 },
 
 ])
@@ -46,7 +46,7 @@ if(answers.shape === 'circle'){
     finalShape = new Triangle();
 }
 
-finalShape.setColor(answer.shapeColor);
+finalShape.setColor(answers.shapeColor);
 svg.setShape(finalShape);
 
 
