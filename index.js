@@ -1,29 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// const generateReadMe = ({ title, description, installation, usage, contributing, tests, license }) => 
-
-// `# ${title}
-
-// ## Description
-// ${description}
-
-// ## Installation
-// ${installation}
-
-// ## Usage
-// ${usage}
-
-// ## Contributing
-// ${contributing}
-
-// ## Tests
-// ${tests}
-
-// ## License
-// ${license}`;
-
-
 
 inquirer
 .prompt([
@@ -51,10 +28,8 @@ inquirer
 
 ])
 .then((answers) => {
-    const readMeContent = generateReadMe(answers);
-
-    fs.writeFile('logo.svg', readMeContent, (err) =>
-    err ? console.log(err) : console.log('Successfully created readme.md file!')
+    fs.writeFile('logo.svg', (err) =>
+    err ? console.log(err) : console.log('Successfully created SVG logo!')
     );
 });
 
